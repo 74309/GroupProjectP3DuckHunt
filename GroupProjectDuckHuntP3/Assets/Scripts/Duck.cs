@@ -48,8 +48,15 @@ public class Duck : MonoBehaviour
         }
         else
         {
-
+            if (isStartFalling)
+                transform.position = Vector3.MoveTowards(transform.position, transform.position - transform.up, 10*Time.deltaTime);
         }
+    }
+
+    public void TimeUp()
+    {
+        speed *= 2;
+        target = transform.position + new Vector3(0, 20, 0);
     }
 
     private void OnMouseDown()
@@ -99,14 +106,14 @@ public class Duck : MonoBehaviour
         if (activeTime > 0)
         {
             target = target + new Vector3(Random.Range(-12, 12), Random.Range(-12, 12), 0);
-            if (target.x > 8)
-                target.x = 8;
-            if (target.x < -8)
-                target.x = -8;
-            if (target.y > 4)
-                target.y = 4;
-            if (target.y < -4)
-                target.y = -4;  
+            if (target.x > 14)
+                target.x = 14;
+            if (target.x < -7)
+                target.x = -7;
+            if (target.y > 9)
+                target.y = 9;
+            if (target.y < 2)
+                target.y = 2;  
         }
     }
 }
