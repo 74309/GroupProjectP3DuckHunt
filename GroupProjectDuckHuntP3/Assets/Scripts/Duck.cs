@@ -106,14 +106,14 @@ public class Duck : MonoBehaviour
         if (activeTime > 0)
         {
             target = target + new Vector3(Random.Range(-12, 12), Random.Range(-12, 12), 0);
-            if (target.x > 14)
-                target.x = 14;
+            if (target.x > 15)
+                target.x = 15;
             if (target.x < -7)
                 target.x = -7;
-            if (target.y > 9)
-                target.y = 9;
-            if (target.y < 2)
-                target.y = 2;  
+            if (target.y > 6)
+                target.y = 6;
+            if (target.y < -2)
+                target.y = -2;  
         }
     }
 }
