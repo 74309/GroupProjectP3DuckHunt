@@ -67,10 +67,12 @@ public class Duck : MonoBehaviour
 
     IEnumerator Dead()
     {
+        GameManager.Instance.HitDuck();
         isDead = true;
         anim.SetTrigger("Die");
         yield return new WaitForSeconds(0.4f);
         isStartFalling = true;
+        Destroy(gameObject, 3f);
     }
 
     public void UpdateSprite()
@@ -96,6 +98,10 @@ public class Duck : MonoBehaviour
             anim.SetInteger("Fly", 1);
         }
     }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        SetTarget();
+    }
 
     private void OnDrawGizmos()
     {
@@ -106,6 +112,7 @@ public class Duck : MonoBehaviour
         if (activeTime > 0)
         {
             target = target + new Vector3(Random.Range(-12, 12), Random.Range(-12, 12), 0);
+
             if (target.x > 15)
                 target.x = 15;
             if (target.x < -7)
