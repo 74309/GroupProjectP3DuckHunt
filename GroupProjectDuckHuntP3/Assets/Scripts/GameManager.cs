@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     bool isRoundOver;
     bool isGameOver;  // Flag to track game over state
     Coroutine timeUpCoroutine;  // To hold reference to the TimeUp coroutine
+    
 
     // Start is called before the first frame update
     void Start()
@@ -104,7 +105,8 @@ public class GameManager : MonoBehaviour
     public void HitDuck()
     {
         if (isGameOver) return;  // Do nothing if the game is over
-        StartCoroutine(Hit());
+        StartCoroutine(Hit());   // Handle hit logic (score increase, hit count)
+        lives++;
     }
 
     // Handle when a duck is hit
@@ -231,6 +233,11 @@ public class GameManager : MonoBehaviour
                     HitDuck();
                     return;  // Exit the function to prevent life loss
                 }
+                
+                
+                    
+                
+                
             }
 
             // If no duck is hit, call MissDuck to remove a life
